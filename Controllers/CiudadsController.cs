@@ -19,7 +19,7 @@ namespace sistemaWEB.Controllers
             _context.ciudades.Include(x => x.listHoteles).Include(c => c.listVuelosDestino).Include(d => d.listVuelosOrigen).Load();
         }
 
-        // GET: Ciudads correto
+        // GET: Ciudades
         public async Task<IActionResult> Index()
         {
             return _context.ciudades != null ?
@@ -34,7 +34,7 @@ namespace sistemaWEB.Controllers
                         Problem("Entity set 'MiContexto.ciudades'  is null.");
         }
 
-        // GET: Ciudads/Details/5 correcto
+        // GET: Ciudads/Details
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.ciudades == null)
@@ -52,15 +52,13 @@ namespace sistemaWEB.Controllers
             return View(ciudad);
         }
 
-        // GET: Ciudads/Create
+        // GET: Ciudades/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Ciudads/Create correcto
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Ciudades/Create 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("id,nombre")] Ciudad ciudad)
@@ -74,7 +72,7 @@ namespace sistemaWEB.Controllers
             return View(ciudad);
         }
 
-        // GET: Ciudads/Edit/5
+        // GET: Ciudades/Edit
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.ciudades == null)
@@ -90,9 +88,8 @@ namespace sistemaWEB.Controllers
             return View(ciudad);
         }
 
-        // POST: Ciudads/Edit/5 correcto
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Ciudades/Edit
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,nombre")] Ciudad ciudad)
@@ -128,7 +125,7 @@ namespace sistemaWEB.Controllers
             return View(ciudad);
         }
 
-        // GET: Ciudads/Delete/5 correcto
+        // GET: Ciudades/Delete
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.ciudades == null)
@@ -152,7 +149,7 @@ namespace sistemaWEB.Controllers
             return View(ciudad);
         }
 
-        // POST: Ciudads/Delete/5 revisar
+        // POST: Ciudades/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

@@ -35,8 +35,7 @@ namespace sistemaWEB.Models
         {
             base.OnModelCreating(modelBuilder);
 
-            //tablas de la base
-            //modelBuilder.Ignore<Agencia>();//dejamos fuera del modelo a la clase logica
+ 
 
             modelBuilder.Entity<Usuario>()
                 .ToTable("Usuario")

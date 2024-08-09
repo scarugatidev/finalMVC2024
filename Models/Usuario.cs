@@ -18,9 +18,9 @@ namespace sistemaWEB.Models
         public List<ReservaHotel> listMisReservasHoteles { get; set; }
 
         public List<ReservaVuelo> listMisReservasVuelo { get; set; }
-        public List<Vuelo> listVuelosTomados { get; set; }//Icoleccion en vez de List?
+        public List<Vuelo> listVuelosTomados { get; set; }
 
-        public List<Hotel> listHotelesVisitados { get; set; }//Icoleccion en vez de List?
+        public List<Hotel> listHotelesVisitados { get; set; }
         public double credito { get; set; }
         public bool esAdmin { get; set; }
 
@@ -29,8 +29,6 @@ namespace sistemaWEB.Models
 
         public Usuario() { }
 
-        //constructor para formUsuarioRegistro
-        //nombre, apellido, dni, mail, password
         public Usuario( string name, string apellido, string dni, string mail,string password)
         {
             
@@ -45,7 +43,7 @@ namespace sistemaWEB.Models
             listHotelesVisitados = new List<Hotel>();
             listVuelosTomados = new List<Vuelo>();
         }
-        //constructor para formUsuario
+  
         
         public Usuario(int id,string name, string apellido, string dni, string mail)
         {
@@ -79,22 +77,7 @@ namespace sistemaWEB.Models
             listHotelesVisitados = new List<Hotel>();
             listVuelosTomados = new List<Vuelo>();
         }
-        /*
-        public Usuario(int id, string name, string apellido, string dni, string mail, bool esADM, string password)
-        {
-            this.id = id;
-            this.name = name;
-            this.apellido = apellido;
-            this.dni = dni;
-            this.esAdmin = false;
-            this.password = password;
-            this.mail = mail;
-            listMisReservasHoteles = new List<ReservaHotel>();
-            listMisReservasVuelo = new List<ReservaVuelo>();
-            listHotelesVisitados = new List<Hotel>();
-            listVuelosTomados = new List<Vuelo>();
-        }
-        */
+
         
         public Usuario(int id, string dni, string name, string apellido,string mail,string password, bool EsADM, bool Bloqueado)
         {
@@ -113,7 +96,7 @@ namespace sistemaWEB.Models
         }
 
 
-        //metodos
+       
 
         public void setReservaHotel(ReservaHotel reserva)
         {

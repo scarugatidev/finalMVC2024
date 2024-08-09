@@ -14,7 +14,7 @@ namespace sistemaWEB.Models
         //foreing key
         public List<Vuelo> listVuelosOrigen { get; set; }
         public List<Vuelo> listVuelosDestino { get; set; }
-        //public int idVuelo {  get; set; }//borrar
+     
        
 
 
@@ -25,15 +25,12 @@ namespace sistemaWEB.Models
             this.id = id;
             this.nombre = nombre;
             listHoteles = new List<Hotel>();
-            //listVuelos = new List<Vuelo>();
         }
 
         public Ciudad(string nombre)
         {
             this.id = id;
             this.nombre = nombre;
-            //listHoteles = new List<Hotel>();
-            //listVuelos = new List<Vuelo>();
         }
 
         public string[] ToString()

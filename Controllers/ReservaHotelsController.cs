@@ -24,7 +24,7 @@ namespace sistemaWEB.Controllers
             _context.hoteles.Load();
         }
 
-        // GET: ReservaHotels
+        // GET: ReservaHoteles
         public async Task<IActionResult> MisReservasHotel()
         {
             var usuarioActual = Helper.SessionExtensions.Get<Usuario>(HttpContext.Session, "usuarioActual");
@@ -39,14 +39,14 @@ namespace sistemaWEB.Controllers
             return View(misReservasHotel);
         }
 
-        // GET: ReservaHotels
+        // GET: ReservaHoteles
         public async Task<IActionResult> Index()
         {
             var miContexto = _context.reservaHoteles.Include(r => r.miHotel).Include(r => r.miUsuario);
             return View(await miContexto.ToListAsync());
         }
 
-        // GET: ReservaHotels/Details/5
+        // GET: ReservaHotels/Details
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.reservaHoteles == null)
@@ -113,9 +113,8 @@ namespace sistemaWEB.Controllers
         }
 
 
-        // POST: ReservaHotels/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: ReservaHoteles/Create
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("idReservaHotel,idHotel,cantidadPersonas,idUsuario,fechaDesde,fechaHasta,pagado")] ReservaHotel reservaHotel)
@@ -169,7 +168,7 @@ namespace sistemaWEB.Controllers
 
 
 
-        // GET: ReservaHotels/Edit/5
+        // GET: ReservaHoteles/Edit
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.reservaHoteles == null)
@@ -187,9 +186,7 @@ namespace sistemaWEB.Controllers
             return View(reservaHotel);
         }
 
-        // POST: ReservaHotels/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: ReservaHoteles/Edit/
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("idReservaHotel,idHotel,cantidadPersonas,idUsuario,fechaDesde,fechaHasta,pagado")] ReservaHotel reservaHotel)
@@ -226,7 +223,7 @@ namespace sistemaWEB.Controllers
 
 
 
-        // GET: ReservaHotels/Edit/5
+        // GET: ReservaHoteles/Edit
         public async Task<IActionResult> MisReservasHotelEdit(int? id)
         {
             if (id == null || _context.reservaHoteles == null)
@@ -244,9 +241,7 @@ namespace sistemaWEB.Controllers
             return View(reservaHotel);
         }
 
-        // POST: ReservaHotels/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: ReservaHoteles/Edit
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -300,7 +295,7 @@ namespace sistemaWEB.Controllers
 
 
 
-        // GET: ReservaHotels/Delete/5
+        // GET: ReservaHoteles/Delete
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.reservaHoteles == null)
@@ -320,7 +315,7 @@ namespace sistemaWEB.Controllers
             return View(reservaHotel);
         }
 
-        // POST: ReservaHotels/Delete/5
+        // POST: ReservaHoteles/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

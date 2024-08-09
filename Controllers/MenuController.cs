@@ -14,7 +14,7 @@ namespace sistemaWEB.Controllers
             return View(new BusinessMenu() { flagPermisos = usuarioActual.esAdmin });
         }
 
-        // GET: MenuController/Details/5
+        // GET: MenuController/Details
         public ActionResult CerrarSesion()
         {
             Helper.SessionExtensions.delete<Usuario>(HttpContext.Session, "usuarioActual");

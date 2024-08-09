@@ -19,13 +19,13 @@ namespace sistemaWEB.Controllers
             _context = context;
         }
 
-        // GET: Hotels correcto
+        // GET: Hoteles
         public async Task<IActionResult> Index()
         {
             var miContexto = _context.hoteles.Include(h => h.ubicacion);
             return View(await miContexto.ToListAsync());
         }
-        //correctp
+        
         public IActionResult MisHotelesQueVisite()
         {
             var usuarioActual = Helper.SessionExtensions.Get<Usuario>(HttpContext.Session, "usuarioActual");
@@ -34,7 +34,7 @@ namespace sistemaWEB.Controllers
             return View(misHoteles);
         }
 
-        // GET: Hotels/Details/5 correcto
+        // GET: Hoteles/Details
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null || _context.hoteles == null)
@@ -53,16 +53,15 @@ namespace sistemaWEB.Controllers
             return View(hotel);
         }
 
-        // GET: Hotels/Create correcto
+        // GET: Hoteles/Create
         public IActionResult Create()
         {
             ViewData["idCiudad"] = new SelectList(_context.ciudades, "id", "nombre");
             return View();
         }
 
-        // POST: Hotels/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to. correcto
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Hoteles/Create
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("id,capacidad,costo,nombre,idCiudad")] Hotel hotel)
@@ -77,7 +76,7 @@ namespace sistemaWEB.Controllers
             return View(hotel);
         }
 
-        // GET: Hotels/Edit/5 correcto
+        // GET: Hoteles/Edit
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null || _context.hoteles == null)
@@ -94,9 +93,8 @@ namespace sistemaWEB.Controllers
             return View(hotel);
         }
 
-        // POST: Hotels/Edit/5 correcto
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Hotels/Edit/5
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("id,capacidad,costo,nombre,idCiudad")] Hotel hotel)
@@ -136,7 +134,7 @@ namespace sistemaWEB.Controllers
             return View(hotel);
         }
 
-        // GET: Hotels/Delete/5
+        // GET: Hotels/Delete
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null || _context.hoteles == null)
@@ -155,7 +153,7 @@ namespace sistemaWEB.Controllers
             return View(hotel);
         }
 
-        // POST: Hotels/Delete/5
+        // POST: Hotels/Delete
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
