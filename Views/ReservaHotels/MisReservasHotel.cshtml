@@ -1,0 +1,101 @@
+﻿@model IEnumerable<sistemaWEB.Models.ReservaHotel>
+
+@{
+    ViewData["Title"] = "Index";
+    var msjErrorReservaVuelo = "";
+    if (@ViewBag.msjErrorReservaVuelo != null)
+    {
+        msjErrorReservaVuelo = @ViewBag.msjErrorReservaVuelo;
+    }
+}
+
+<div class="row">
+
+    <div class="col-md-12" style="background-color:#B4E7D8; width:90%; height:95%; border-radius:10px;  align-content:center; margin: 20px;">
+
+        <h5>Mis reservas Hotel</h5>
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.miHotel.id)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.miHotel.ubicacion.nombre)
+                    </th>
+                    <th scope="col">
+                        @Html.Display("MontoPagado")
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.miHotel.nombre)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.miHotel.capacidad)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.fechaDesde)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.fechaHasta)
+                    </th>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.miHotel.costo)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr scope="row">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.miHotel.id)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.miHotel.ubicacion.nombre)
+                        </td>
+                        <td>
+
+                            @{
+                                var montoPagado = 50;
+                            }
+
+                            @Html.DisplayFor(modelItem => @montoPagado)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.miHotel.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.miHotel.capacidad)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.fechaDesde)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.fechaHasta)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.miHotel.costo)
+                        </td>
+                        <td>
+                            <a asp-action="MisReservasHotelEdit" asp-route-id="@item.idReservaHotel">Edit</a> |
+                            <a asp-action="MisReservasHotelDelete" asp-route-id="@item.idReservaHotel">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div class="form-group">
+            <label class="control-label">@msjErrorReservaVuelo</label>
+            <span asp-validation-for="@msjErrorReservaVuelo" class="text-danger"></span>
+        </div>
+
+    </div>
+</div>
+
+
+<div>
+    <a asp-action="Index" asp-controller="Menu">Back to List</a>
+</div>

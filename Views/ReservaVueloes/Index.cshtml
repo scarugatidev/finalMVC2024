@@ -1,0 +1,55 @@
+﻿@model IEnumerable<sistemaWEB.Models.ReservaVuelo>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+
+    <div class="col-md-12" style="background-color:#B4E7D8; width:90%; height:95%; border-radius:10px;  align-content:center; margin: 20px;">
+
+        <h1>Index</h1>
+
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.miVuelo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.miUsuario)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.pagado)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.miVuelo.aerolinea)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.miUsuario.dni)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.pagado)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.idReservaVuelo">Edit</a> |
+                            <a asp-action="Details" asp-route-id="@item.idReservaVuelo">Details</a> |
+                            <a asp-action="Delete" asp-route-id="@item.idReservaVuelo">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

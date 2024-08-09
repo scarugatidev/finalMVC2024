@@ -1,0 +1,79 @@
+﻿@model sistemaWEB.Models.ReservaVuelo
+
+@{
+    ViewData["Title"] = "Edit";
+    var errorMensajeEditReservaVuelo = "";
+    if (ViewBag.errorMensajeEditReservaVuelo != null)
+    {
+        errorMensajeEditReservaVuelo = @ViewBag.errorMensajeEditReservaVuelo;
+    }
+}
+
+<div class="row">
+
+    <div class="col-md-12" style="background-color:#B4E7D8; width:90%; height:95%; border-radius:10px;  align-content:center; margin: 20px;">
+
+        <h4>ReservaVuelo</h4>
+
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="EditMiReservaVuelo">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="idReservaVuelo" />
+                    <input type="hidden" name="idVuelo" value="@Model.idVuelo" />
+                    <div class="form-group">
+                        <label asp-for="idReservaVuelo" class="control-label"></label>
+                        <input asp-for="idReservaVuelo" class="form-control" disabled />
+                        <span asp-validation-for="idReservaVuelo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="miVuelo.id" class="control-label"></label>
+                        <input asp-for="miVuelo.id" class="form-control" disabled />
+                        <span asp-validation-for="miVuelo.id" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="miVuelo.origen.nombre" class="control-label"></label>
+                        <input asp-for="miVuelo.origen.nombre" class="form-control" disabled />
+                        <span asp-validation-for="miVuelo.origen.nombre" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="miVuelo.destino.nombre" class="control-label"></label>
+                        <input asp-for="miVuelo.destino.nombre" class="form-control" disabled />
+                        <span asp-validation-for="miVuelo.destino.nombre" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="miVuelo.fecha" class="control-label"></label>
+                        <input asp-for="miVuelo.fecha" class="form-control" disabled />
+                        <span asp-validation-for="miVuelo.fecha" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label name="cantidad" class="control-label">Cantidad</label>
+                        <input name="cantidad" class="form-control" value="" />
+                        <input hidden name="idVuelo" class="form-control" value="model.id" />
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label">@errorMensajeEditReservaVuelo</label>
+            <span asp-validation-for="@errorMensajeEditReservaVuelo" class="text-danger"></span>
+        </div>
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="MisReservasVuelo">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

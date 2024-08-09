@@ -1,0 +1,74 @@
+﻿@model sistemaWEB.Models.Vuelo
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="row">
+
+    <div class="col-md-12" style="background-color:#B4E7D8; width:90%; height:95%; border-radius:10px;  align-content:center; margin: 20px;">
+
+        <h1>Details</h1>
+
+        <div>
+            <h4>Vuelo</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.origen)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.origen.nombre)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.destino)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.destino.nombre)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.capacidad)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.capacidad)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.vendido)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.vendido)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.costo)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.costo)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.fecha)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.fecha)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.aerolinea)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.aerolinea)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.avion)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.avion)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
+            <a asp-action="Index">Back to List</a>
+        </div>
+
+    </div>
+
+</div>

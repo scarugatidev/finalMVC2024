@@ -1,0 +1,56 @@
+﻿@model sistemaWEB.Models.Business.Menu.BusinessMenu
+
+@{
+    ViewData["Title"] = "Menu";
+    var flag = Model.flagPermisos == false ? true : false;
+}
+
+
+<div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Consultas - Opciones
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href='@Url.Action("Create", "ReservaHotels")'>Hoteles</a></li>
+                            <li><a class="dropdown-item" href='@Url.Action("Create", "ReservaVueloes")'>Vuelos</a></li>
+                            <li><a class="dropdown-item" href='@Url.Action("ReporteCiudades", "Ciudads")'>Ciudades</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Opciones-Usuario-Comun
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href='@Url.Action("UsuarioSimple", "Usuarios")'>Mi Credito - Cargar</a></li>
+                            <li><a class="dropdown-item" href='@Url.Action("MisReservasHotel", "ReservaHotels")'>Mis reservas hoteles</a></li>
+                            <li><a class="dropdown-item" href='@Url.Action("MisReservasVuelo", "ReservaVueloes")'>Mis reservas vuelos</a></li>
+                            <li><a class="dropdown-item" href='@Url.Action("MisVuelosEnCualViaje", "Vueloes")'>Mis vuelos (en cual viaje)</a></li>
+                            <li><a class="dropdown-item" href='@Url.Action("MisHotelesQueVisite", "Hotels")'>Mis Hoteles (que visite)</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown" hidden="@flag">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            ABM
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+                            <li><a class="dropdown-item" href='@Url.Action("Index", "Vueloes")'>Vuelos</a></li>
+                            <li><a class="dropdown-item" href='@Url.Action("Index", "Hotels")'>Hoteles</a></li>
+                            <li><a class="dropdown-item" href='@Url.Action("Index", "Ciudads")'>Ciudades</a></li>
+                            <li><a class="dropdown-item" href='@Url.Action("Index", "Usuarios")'>Usuarios</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href='@Url.Action("CerrarSesion", "Menu")' tabindex="-1" aria-disabled="false">Cerrar sesion</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+</div>

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<sistemaWEB.Models.Ciudad>
+
+@{
+    ViewData["Title"] = "Reporte ciudades";
+}
+
+<h1>Reporte ciudades</h1>
+
+<div class="row">
+
+    <div style="margin:20px">
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">
+                        @Html.DisplayNameFor(model => model.id)
+                        @Html.DisplayNameFor(model => model.nombre)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr scope="row">
+                        <td>
+                            @Html.DisplayFor(modelItem => item.id)
+                            @Html.DisplayFor(modelItem => item.nombre)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<div>
+    <a asp-action="Index" asp-controller="Menu">Back to List</a>
+</div>

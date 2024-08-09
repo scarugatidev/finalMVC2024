@@ -1,0 +1,48 @@
+﻿@model sistemaWEB.Models.Hotel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="row">
+
+    <div class="col-md-12" style="background-color:#B4E7D8; width:90%; height:95%; border-radius:10px;  align-content:center; margin: 20px;">
+
+        <h1>Details</h1>
+
+        <div>
+            <h4>Hotel</h4>
+            <hr />
+            <dl class="row">
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.ubicacion)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.ubicacion.nombre)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.capacidad)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.capacidad)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.costo)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.costo)
+                </dd>
+                <dt class="col-sm-2">
+                    @Html.DisplayNameFor(model => model.nombre)
+                </dt>
+                <dd class="col-sm-10">
+                    @Html.DisplayFor(model => model.nombre)
+                </dd>
+            </dl>
+        </div>
+    </div>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model?.id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

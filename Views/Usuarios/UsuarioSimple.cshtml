@@ -1,0 +1,132 @@
+﻿@model sistemaWEB.Models.Usuario
+
+@{
+    var textErrorCredito = "";
+    if (@ViewBag.ErrorCredito != null)
+    {
+        textErrorCredito = @ViewBag.ErrorCredito;
+    }
+    var textErrorPass = "";
+    if (@ViewBag.ErrorCredito != null)
+    {
+        textErrorPass = @ViewBag.ErrorPass;
+    }
+    var textErrorDatPersonales = "";
+    if (@ViewBag.ErrorCredito != null)
+    {
+        textErrorDatPersonales = @ViewBag.ErrorDatPersonales;
+    }
+}
+
+
+<div class="row">
+
+    <div class="col-md-12" style="background-color:#B4E7D8; width:90%; height:95%; border-radius:10px;  align-content:center; margin: 20px;">
+
+        <h1>Panel usuario</h1>
+
+        <hr />
+        <div class="row">
+            <div class="col-md-3">
+
+                <h4>Mi credito: @Model.credito</h4>
+                <hr />
+
+                <form asp-action="agregarCredito">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="credito" class="control-label"></label>
+                        <input asp-for="credito" class="form-control" />
+                        <span asp-validation-for="credito" class="text-danger"></span>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <input type="submit" value="Agregar credito" class="btn btn-primary" />
+                    </div>
+                </form>
+                <br />
+                <div class="form-group">
+                    <label class="control-label">@textErrorCredito</label>
+                    <span asp-validation-for="@textErrorCredito" class="text-danger"></span>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-3">
+                <h4>Modificar pasword</h4>
+                <hr />
+
+                <form asp-action="modificarPassword">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="password" class="control-label"></label>
+                        <input asp-for="password" class="form-control" />
+                        <span asp-validation-for="password" class="text-danger"></span>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <input type="submit" value="Modifiar password" class="btn btn-primary" />
+                    </div>
+                </form>
+                <br />
+                <div class="form-group">
+                    <label class="control-label">@textErrorPass</label>
+                    <span asp-validation-for="@textErrorPass" class="text-danger"></span>
+                </div>
+            </div>
+
+
+
+            <div class="col-md-3">
+
+                <h4>Datos Personales</h4>
+                <hr />
+
+                <form asp-action="ModifiarUsuarioSimple">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="name" class="control-label"></label>
+                        <input asp-for="name" class="form-control" />
+                        <span asp-validation-for="name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="apellido" class="control-label"></label>
+                        <input asp-for="apellido" class="form-control" />
+                        <span asp-validation-for="apellido" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="dni" class="control-label"></label>
+                        <input asp-for="dni" class="form-control" />
+                        <span asp-validation-for="dni" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="mail" class="control-label"></label>
+                        <input asp-for="mail" class="form-control" />
+                        <input hidden asp-for="password" class="form-control" />
+                        <span asp-validation-for="mail" class="text-danger"></span>
+                    </div>
+                    <hr />
+                    <div class="form-group">
+                        <input type="submit" value="Modifiar" class="btn btn-primary" />
+                    </div>
+                </form>
+                <br />
+                <div class="form-group">
+                    <label class="control-label">@textErrorDatPersonales</label>
+                    <span asp-validation-for="@textErrorDatPersonales" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-controller="Menu">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

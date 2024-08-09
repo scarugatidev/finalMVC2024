@@ -1,0 +1,175 @@
+﻿@model sistemaWEB.Models.Business.ReservaHotel.BusinessReservaHotel
+
+@{
+    ViewData["Title"] = "Create";
+    var textError = "";
+    var flag = true;
+
+    if (@ViewBag.Error != null)
+    {
+        textError = @ViewBag.Error;
+    }
+
+    if (Model.DispReservaHotel.Count >= 1)
+    {
+        flag = false;
+    }
+}
+
+<div class="row">
+
+    <div class="col-md-12" style="background-color:#B4E7D8; width:90%; height:95%; border-radius:10px;  align-content:center; margin: 20px;">
+
+        <h1>Create</h1>
+
+        <h4>ReservaHotel</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-3">
+
+                <form asp-action="CreateConsulta">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="idReservaHotel" />
+                    <div class="form-group">
+                        <label asp-for="Ciudad" class="control-label"></label>
+                        <select asp-for="Ciudad" class="form-control" data-val-required="Dato obligatorio" asp-items="ViewBag.ciudad"></select>
+                        <span asp-validation-for="Ciudad" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="cantidadPersonas" class="control-label"></label>
+                        <input asp-for="cantidadPersonas" class="form-control" data-val-required="Dato obligatorio" />
+                        <span asp-validation-for="cantidadPersonas" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="fechaDesde" class="control-label"></label>
+                        <input asp-for="fechaDesde" type="date" class="form-control" data-val-required="Dato obligatorio" />
+                        <span asp-validation-for="fechaDesde" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="fechaHasta" class="control-label"></label>
+                        <input asp-for="fechaHasta" type="date" class="form-control" data-val-required="Dato obligatorio" />
+                        <span asp-validation-for="fechaHasta" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="monto" class="control-label"></label>
+                        <input asp-for="monto" class="form-control" data-val-required="Dato obligatorio" />
+                        <span asp-validation-for="monto" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="form-group">
+                        <input type="submit" value="Buscar" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+
+
+            <div class="col-md-9">
+                <table class="table table-striped">
+                    <thead> 
+                        <tr>
+                            <th scope="col">
+                                @Html.DisplayName("id")
+                            </th>
+                            <th scope="col">
+                                @Html.DisplayName("ubicacion")
+                            </th scope="col">
+                            <th>
+                                @Html.DisplayName("disponibilidad")
+                            </th scope="col">
+                            <th>
+                                @Html.DisplayName("costo")
+                            </th scope="col">
+                            <th>
+                                @Html.DisplayName("nombre")
+                            </th scope="col">
+                            <th>
+                                @Html.DisplayName("FechaDesde")
+                            </th scope="col">
+                            <th>
+                                @Html.DisplayName("FechaHasta")
+                            </th scope="col">
+                            <th scope="col">
+                                @Html.DisplayName("Monto")
+                            </th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.DispReservaHotel)
+                        {
+                            <tr scope="row">
+                                <td >
+                                    @Html.DisplayFor(modelItem => item.id)
+                                </td>
+                                <td >
+                                    @Html.DisplayFor(modelItem => item.ubicacion)
+                                </td>
+                                <td >
+                                    @Html.DisplayFor(modelItem => item.disponibilidad)
+                                </td>
+                                <td >
+                                    @Html.DisplayFor(modelItem => item.costo)
+                                </td>
+                                <td >
+                                    @Html.DisplayFor(modelItem => item.nombre)
+                                </td >
+                                <td >
+                                    @Html.DisplayFor(modelItem => item.FechaDesde)
+                                </td>
+                                <td >
+                                    @Html.DisplayFor(modelItem => item.FechaHasta)
+                                </td>
+                                <td>
+                                    <form asp-action="Reservar">
+                                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                                        <input hidden name="id" class="form-control" value="@item.id" />
+                                        <input hidden name="ubicacion" class="form-control" value="@item.ubicacion" />
+                                        <input hidden name="costo" class="form-control" value="@item.costo" />
+                                        <input hidden name="nombre" class="form-control" value="@item.nombre" />
+                                        <input hidden name="FechaDesde" class="form-control" value="@item.FechaDesde" />
+                                        <input hidden name="FechaHasta" class="form-control" value="@item.FechaHasta" />
+                                        <input hidden asp-for="Ciudad" class="form-control" />
+                                        <input hidden asp-for="cantidadPersonas" class="form-control" />
+                                        <input hidden asp-for="fechaDesde" class="form-control" />
+                                        <div hidden="@flag" class="form-group">
+                                            <label asp-for="monto" class="control-label"></label>
+                                            <input asp-for="monto" class="form-control" data-val-required="Dato obligatorio" />
+                                            <span asp-validation-for="monto" class="text-danger"></span>
+                                        </div>
+                                        <input hidden asp-for="fechaHasta" class="form-control" />
+                                        <input hidden asp-for="fechaHasta" class="form-control" />
+                                        <br />
+                                        <div class="form-group">
+                                            <input type="submit" value="Reservar" class="btn btn-primary" />
+                                        </div>
+                                    </form>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+                <div class="form-group">
+                    <label class="control-label">@textError</label>
+                    <span asp-validation-for="@textError" class="text-danger"></span>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-controller="Menu">Back to List</a>
+</div>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+
+
+    }
+}
